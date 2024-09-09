@@ -3,35 +3,8 @@
 "use client";
 
 import { useForm, SubmitHandler } from "react-hook-form";
-import { z } from "zod";
+import { FormFields, schema } from '@/app/_lib/data/definitions';
 import { zodResolver } from "@hookform/resolvers/zod";
-// swx@2WS
-const schema = z.object({
-  name: z.string().min(1, { message: "Name is required." }),
-  email: z
-    .string()
-    .min(1, { message: "Email is required." })
-    .email({ message: "Please enter a valid email." }),
-  password: z
-    .string()
-    .min(8, { message: "Password must be at least 8 characters." })
-    .regex(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-      {
-        message:
-          "Password must contains at least one uppercase, one lowercase, one number, one special character",
-      }
-    ),
-});
-
-type FormFields = z.infer<typeof schema>;
-
-// BEFORE USING ZOD
-// type FormFields = {
-//   name: string;
-//   email: string;
-//   password: string;
-// };
 
 export default function Home() {
   const {
@@ -46,10 +19,8 @@ export default function Home() {
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
-          
-      // throw new Error("Email is already taken.");
-      console.log('Validating on Submit action...')
-      alert(JSON.stringify(data));
+      console.log("Validating on Submit action...");
+      // alert(JSON.stringify(data));
     } catch (error) {
       setError("email", {
         message: "Email is already taken.",
@@ -66,13 +37,7 @@ export default function Home() {
           className="flex flex-col gap-2 w-96"
         >
           <input
-            {...register(
-              "name"
-              // BEFORE USING ZOD
-              // ,{
-              //   required: true,
-              // }
-            )}
+            {...register("name")}
             className="border w-full rounded-md p-4"
             type="text"
             placeholder="Name"
