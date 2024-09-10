@@ -1,8 +1,5 @@
 import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-// swx@2WS
-export const schema = z.object({
-  name: z.string().min(1, { message: "Name is required." }),
+export const LoginSchema = z.object({
   email: z
     .string()
     .min(1, { message: "Email is required." })
@@ -19,4 +16,6 @@ export const schema = z.object({
     ),
 });
 
-export type FormFields = z.infer<typeof schema>;
+export type FormFields = z.infer<typeof LoginSchema>;
+
+

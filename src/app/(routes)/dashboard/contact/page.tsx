@@ -1,7 +1,7 @@
 "use client"
 
 import { Suspense, useEffect, useState } from "react";
-import MyComp from "../../components/contact/mycomp";
+import MyComp from "../../../components/contact/mycomp";
 // swx@2WS
 export default async function Page(){
     await wait(3000);
@@ -11,7 +11,6 @@ export default async function Page(){
          <MyComp/>   
         </div></>)
 }
-
 function wait(duration:number){
     return new Promise(resolve =>{
         setTimeout(resolve,duration)

@@ -1,5 +1,5 @@
 export default async function MyComp(){
-    await wait(3000);
+ 
     return(
         <div className="m-20 rounded-lg bg-white text-black text-sm font-bold flex flex-column justify-center" >
             <div>
@@ -11,9 +11,3 @@ export default async function MyComp(){
     )
 }
 
-
-function wait(duration:number){
-    return new Promise(resolve =>{
-        setTimeout(resolve,duration)
-    })
-}
