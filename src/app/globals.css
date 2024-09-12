@@ -65,3 +65,7 @@
   }
 }
 
+
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}

@@ -11,6 +11,16 @@ const config: Config = {
 
 
   	extend: {
+		animation: {
+			// adjust speed according to your need
+			marquee: 'marquee 40s linear infinite',
+		  },
+		  keyframes: {
+			marquee: {
+			  '0%': { transform: 'translateX(100%)' },
+			  '100%': { transform: 'translateX(-200%)' },
+			}
+		  },
   		backgroundImage: {
   			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
   			'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
@@ -62,7 +72,13 @@ const config: Config = {
   				'5': 'hsl(var(--chart-5))'
   			}
   		}
-  	}
+  	},
+	
+  },
+  variants: {
+    extend: {
+      animation: ['hover', 'focus'],
+    }
   },
   plugins: [require("tailwindcss-animate")],
 };
